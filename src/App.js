@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import "./index.css"; // Importa o arquivo CSS principal para estilização
-import CoffeeShop from "./components/CoffeeShop"; // Importa o componente CoffeeShop
-import CoffeeProductionGuide from "./components/CoffeeProductionGuide"; // Importa o componente CoffeeProductionGuide
-import ShoppingCart from "./components/ShoppingCart"; // Importa o componente ShoppingCart
+
+// Importa os componentes separados
+import CoffeeShop from "./components/CoffeeShop"; // Agora importamos o componente da loja com dados estáticos
+import CoffeeProductionGuide from "./components/CoffeeProductionGuide"; // Importa o componente do guia de produção
+import ShoppingCart from "./components/ShoppingCart"; // Importa o componente do carrinho
+import StaticAuthModal from "./components/StaticAuthModal"; // NOVO: Importa o componente do modal de autenticação estático
 
 // Componente Principal do Aplicativo
 const App = () => {
@@ -16,6 +19,8 @@ const App = () => {
   const [message, setMessage] = useState("");
   // Estado para controlar a visibilidade da caixa de mensagem personalizada
   const [showMessageBox, setShowMessageBox] = useState(false);
+  // NOVO: Estado para controlar a visibilidade do modal de autenticação estático
+  const [showAuthModal, setShowAuthModal] = useState(false);
 
   // Função para exibir uma mensagem personalizada na tela
   const showMessage = (msg) => {
@@ -106,6 +111,13 @@ const App = () => {
             >
               Guia de Produção
             </button>
+            {/* NOVO: Botão para abrir o modal de autenticação estático */}
+            <button
+              onClick={() => setShowAuthModal(true)}
+              className="nav-button auth-button"
+            >
+              Login/Registar
+            </button>
             {/* Botão do carrinho de compras */}
             <button onClick={() => setIsCartOpen(true)} className="cart-button">
               {/* Ícone do carrinho (SVG) */}
@@ -135,6 +147,7 @@ const App = () => {
       {/* Conteúdo principal do aplicativo, alternando entre loja e guia */}
       <main className="main-content">
         {activeSection === "shop" ? (
+          // Usamos o CoffeeShop com dados estáticos
           <CoffeeShop addToCart={addToCart} />
         ) : (
           <CoffeeProductionGuide />
@@ -158,7 +171,15 @@ const App = () => {
           cartItems={cartItems}
           removeFromCart={removeFromCart}
           updateQuantity={updateQuantity}
-          onClose={() => setIsCartOpen(false)} // Fecha o modal do carrinho
+          onClose={() => setIsCartOpen(false)}
+        />
+      )}
+
+      {/*Modal de autenticação estático (visível condicionalmente) */}
+      {showAuthModal && (
+        <StaticAuthModal
+          onClose={() => setShowAuthModal(false)}
+          showMessage={showMessage}
         />
       )}
     </div>

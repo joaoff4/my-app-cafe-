@@ -1,5 +1,8 @@
 import React from "react";
-
+import cafeSuaveMatinal from "../images/cafesuave.jpg";
+import cafePremium from "../images/cafepremiuim.jpg";
+import cafeIntenso from "../images/cafeintenso.jpg";
+import cafeDescafeinado from "../images/cafedescafeinado.jpg";
 // Componente da Seção da Loja de Café
 const CoffeeShop = ({ addToCart }) => {
   // Lista de produtos de café
@@ -10,7 +13,7 @@ const CoffeeShop = ({ addToCart }) => {
       description:
         "Um blend encorpado com notas de chocolate amargo e caramelo. Perfeito para o seu expresso da manhã.",
       price: 35.9, // Preço do produto
-      imageUrl: "https://placehold.co/400x300/A0522D/FFFFFF?text=Café+Intenso", // Imagem placeholder
+      imageUrl: cafeIntenso,
     },
     {
       id: 2,
@@ -18,15 +21,15 @@ const CoffeeShop = ({ addToCart }) => {
       description:
         "Café de torra média com acidez equilibrada e notas florais. Ideal para coado e métodos de preparo mais suaves.",
       price: 32.5,
-      imageUrl: "https://placehold.co/400x300/D2B48C/FFFFFF?text=Café+Suave",
+      imageUrl: cafeSuaveMatinal,
     },
     {
       id: 3,
-      name: "Café Gourmet Especial",
+      name: "Café Premium",
       description:
         "Grãos selecionados de origem única, com perfil de sabor complexo e frutado. Uma experiência sensorial única.",
       price: 48.0,
-      imageUrl: "https://placehold.co/400x300/8B4513/FFFFFF?text=Café+Gourmet",
+      imageUrl: cafePremium,
     },
     {
       id: 4,
@@ -34,8 +37,7 @@ const CoffeeShop = ({ addToCart }) => {
       description:
         "Todo o sabor do café, sem cafeína. Processo natural para preservar as características dos grãos.",
       price: 38.0,
-      imageUrl:
-        "https://placehold.co/400x300/6B4226/FFFFFF?text=Café+Descafeinado",
+      imageUrl: cafeDescafeinado,
     },
   ];
 
